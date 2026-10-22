@@ -1,0 +1,372 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Grid -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#21262d" stroke-width="0.7"/>
+    </pattern>
+
+    <!-- Arrow Marker for Current Flow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#f85149" />
+    </marker>
+    <marker id="sig-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#58a6ff" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="820" fill="#0b0e14" />
+  <rect width="1200" height="820" fill="url(#grid)" />
+
+  <!-- Title Header -->
+  <rect x="40" y="20" width="1120" height="60" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="60" y="52" font-family="'Segoe UI', -apple-system, sans-serif" font-size="22" font-weight="700" fill="#58a6ff">GLUEDIA — Two-Stage CMOS Transimpedance Amplifier (TIA)</text>
+  <text x="60" y="70" font-family="'Segoe UI', -apple-system, sans-serif" font-size="13" fill="#8b949e">Transistor-Level Circuit Diagram | 7-MOSFET Two-Stage Miller Op-Amp + 1MΩ Feedback Network</text>
+
+  <!-- ======================================================== -->
+  <!-- POWER RAILS                                              -->
+  <!-- ======================================================== -->
+  <!-- VDD Rail -->
+  <line x1="80" y1="130" x2="1000" y2="130" stroke="#f0883e" stroke-width="3.5"/>
+  <text x="90" y="120" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#f0883e">VDD = 1.8 V</text>
+
+  <!-- GND Rail -->
+  <line x1="80" y1="710" x2="1000" y2="710" stroke="#79c0ff" stroke-width="3.5"/>
+  <text x="90" y="735" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#79c0ff">GND = 0 V</text>
+
+  <!-- ======================================================== -->
+  <!-- STAGE 1: PMOS ACTIVE LOAD (M1 & M2)                      -->
+  <!-- ======================================================== -->
+
+  <!-- ===== M1 (PMOS, Diode-Connected) ===== -->
+  <!-- Center at (320, 200) -->
+  <g id="M1_PMOS">
+    <!-- Source wire to VDD -->
+    <line x1="320" y1="130" x2="320" y2="175" stroke="#f0883e" stroke-width="2.5"/>
+    <circle cx="320" cy="130" r="4" fill="#f0883e"/>
+    <!-- Source terminal -->
+    <line x1="320" y1="175" x2="305" y2="175" stroke="#f0883e" stroke-width="2.5"/>
+    <line x1="305" y1="175" x2="305" y2="185" stroke="#f0883e" stroke-width="2.5"/>
+    <!-- Channel Bar -->
+    <line x1="305" y1="183" x2="305" y2="217" stroke="#f0883e" stroke-width="3.5"/>
+    <!-- Drain terminal -->
+    <line x1="305" y1="215" x2="305" y2="225" stroke="#f0883e" stroke-width="2.5"/>
+    <line x1="305" y1="225" x2="320" y2="225" stroke="#f0883e" stroke-width="2.5"/>
+    <!-- Gate oxide bar -->
+    <line x1="295" y1="183" x2="295" y2="217" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Inversion Bubble -->
+    <circle cx="289" cy="200" r="5" fill="#0b0e14" stroke="#f0883e" stroke-width="2"/>
+    <!-- Gate Lead -->
+    <line x1="284" y1="200" x2="260" y2="200" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Labels -->
+    <text x="235" y="175" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f0883e">M1 (PMOS)</text>
+    <text x="235" y="190" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">W=10µ, L=1µ</text>
+    <text x="328" y="170" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">S</text>
+    <text x="328" y="235" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">D</text>
+  </g>
+
+  <!-- ===== M2 (PMOS, Current Mirror Load) ===== -->
+  <!-- Center at (500, 200) -->
+  <g id="M2_PMOS">
+    <!-- Source wire to VDD -->
+    <line x1="500" y1="130" x2="500" y2="175" stroke="#f0883e" stroke-width="2.5"/>
+    <circle cx="500" cy="130" r="4" fill="#f0883e"/>
+    <!-- Source terminal -->
+    <line x1="500" y1="175" x2="485" y2="175" stroke="#f0883e" stroke-width="2.5"/>
+    <line x1="485" y1="175" x2="485" y2="185" stroke="#f0883e" stroke-width="2.5"/>
+    <!-- Channel Bar -->
+    <line x1="485" y1="183" x2="485" y2="217" stroke="#f0883e" stroke-width="3.5"/>
+    <!-- Drain terminal -->
+    <line x1="485" y1="215" x2="485" y2="225" stroke="#f0883e" stroke-width="2.5"/>
+    <line x1="485" y1="225" x2="500" y2="225" stroke="#f0883e" stroke-width="2.5"/>
+    <!-- Gate oxide bar -->
+    <line x1="475" y1="183" x2="475" y2="217" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Inversion Bubble -->
+    <circle cx="469" cy="200" r="5" fill="#0b0e14" stroke="#f0883e" stroke-width="2"/>
+    <!-- Gate Lead -->
+    <line x1="464" y1="200" x2="430" y2="200" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Labels -->
+    <text x="515" y="175" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f0883e">M2 (PMOS)</text>
+    <text x="515" y="190" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">W=10µ, L=1µ</text>
+    <text x="508" y="170" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">S</text>
+    <text x="508" y="235" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">D</text>
+  </g>
+
+  <!-- M1 Diode Connection & Mirror Bus -->
+  <!-- Wire from M1 Drain (320, 225) up and across to M1 Gate (260, 200) -->
+  <line x1="320" y1="225" x2="320" y2="250" stroke="#d29922" stroke-width="2.5"/>
+  <circle cx="320" cy="250" r="4" fill="#d29922"/>
+  <text x="328" y="255" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#d29922">net1</text>
+  <path d="M 320 250 L 260 250 L 260 200" fill="none" stroke="#d29922" stroke-width="2.5"/>
+  <circle cx="260" cy="200" r="4" fill="#d29922"/>
+  <!-- Mirror wire from M1 gate to M2 gate -->
+  <line x1="260" y1="200" x2="430" y2="200" stroke="#d29922" stroke-width="2.5"/>
+  <circle cx="430" cy="200" r="3.5" fill="#d29922"/>
+
+  <!-- ======================================================== -->
+  <!-- STAGE 1: NMOS DIFFERENTIAL INPUT PAIR (M3 & M4)          -->
+  <!-- ======================================================== -->
+
+  <!-- ===== M3 (NMOS, Inverting Input) ===== -->
+  <!-- Center at (320, 360) -->
+  <g id="M3_NMOS">
+    <!-- Drain wire to net1 -->
+    <line x1="320" y1="250" x2="320" y2="335" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Drain terminal -->
+    <line x1="320" y1="335" x2="305" y2="335" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="305" y1="335" x2="305" y2="345" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Channel Bar -->
+    <line x1="305" y1="343" x2="305" y2="377" stroke="#58a6ff" stroke-width="3.5"/>
+    <!-- Source terminal -->
+    <line x1="305" y1="375" x2="305" y2="385" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="305" y1="385" x2="320" y2="385" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Gate oxide bar -->
+    <line x1="295" y1="343" x2="295" y2="377" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Gate Lead -->
+    <line x1="295" y1="360" x2="220" y2="360" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Bulk / Inward Arrow -->
+    <polygon points="305,360 299,356 299,364" fill="#58a6ff"/>
+    <!-- Labels -->
+    <text x="210" y="335" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#58a6ff">M3 (NMOS)</text>
+    <text x="210" y="350" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">W=10µ, L=1µ</text>
+    <text x="328" y="330" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">D</text>
+    <text x="328" y="395" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">S</text>
+    <text x="245" y="380" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#ff7b72">IN (-)</text>
+  </g>
+
+  <!-- ===== M4 (NMOS, Non-Inverting Input) ===== -->
+  <!-- Center at (500, 360) -->
+  <g id="M4_NMOS">
+    <!-- Drain wire to net2 -->
+    <line x1="500" y1="225" x2="500" y2="335" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Drain terminal -->
+    <line x1="500" y1="335" x2="515" y2="335" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="515" y1="335" x2="515" y2="345" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Channel Bar -->
+    <line x1="515" y1="343" x2="515" y2="377" stroke="#58a6ff" stroke-width="3.5"/>
+    <!-- Source terminal -->
+    <line x1="515" y1="375" x2="515" y2="385" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="515" y1="385" x2="500" y2="385" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Gate oxide bar -->
+    <line x1="525" y1="343" x2="525" y2="377" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Gate Lead -->
+    <line x1="525" y1="360" x2="570" y2="360" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Bulk / Inward Arrow -->
+    <polygon points="515,360 521,356 521,364" fill="#58a6ff"/>
+    <!-- Labels -->
+    <text x="535" y="335" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#58a6ff">M4 (NMOS)</text>
+    <text x="535" y="350" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">W=10µ, L=1µ</text>
+    <text x="485" y="330" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">D</text>
+    <text x="485" y="395" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">S</text>
+  </g>
+
+  <!-- Non-Inverting Terminal (IN_PLUS) -->
+  <line x1="570" y1="360" x2="610" y2="360" stroke="#3fb950" stroke-width="2.5"/>
+  <rect x="610" y="343" width="105" height="34" rx="5" fill="#238636" fill-opacity="0.3" stroke="#238636" stroke-width="1.5"/>
+  <text x="662" y="365" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#3fb950">IN_PLUS</text>
+  <text x="662" y="390" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#8b949e">0.9 V Bias</text>
+
+  <!-- High Gain Node net2 between M2 & M4 -->
+  <circle cx="500" cy="285" r="5" fill="#58a6ff"/>
+  <text x="510" y="280" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#58a6ff">net2 (Stage 1 Output)</text>
+
+  <!-- Common Tail Connection -->
+  <line x1="320" y1="385" x2="320" y2="430" stroke="#e6edf3" stroke-width="2.5"/>
+  <line x1="500" y1="385" x2="500" y2="430" stroke="#e6edf3" stroke-width="2.5"/>
+  <line x1="320" y1="430" x2="500" y2="430" stroke="#e6edf3" stroke-width="2.5"/>
+  <line x1="410" y1="430" x2="410" y2="475" stroke="#e6edf3" stroke-width="2.5"/>
+  <circle cx="410" cy="430" r="4.5" fill="#e6edf3"/>
+  <text x="420" y="425" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#8b949e">tail_tia</text>
+
+  <!-- ===== M5 (NMOS, Tail Current Sink) ===== -->
+  <!-- Center at (410, 500) -->
+  <g id="M5_NMOS">
+    <line x1="410" y1="475" x2="395" y2="475" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="395" y1="475" x2="395" y2="485" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Channel -->
+    <line x1="395" y1="483" x2="395" y2="517" stroke="#58a6ff" stroke-width="3.5"/>
+    <!-- Source -->
+    <line x1="395" y1="515" x2="395" y2="525" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="395" y1="525" x2="410" y2="525" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Gate oxide bar -->
+    <line x1="385" y1="483" x2="385" y2="517" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Gate Lead -->
+    <line x1="385" y1="500" x2="300" y2="500" stroke="#a371f7" stroke-width="2.5"/>
+    <!-- Arrow -->
+    <polygon points="395,500 389,496 389,504" fill="#58a6ff"/>
+    <!-- Labels -->
+    <text x="425" y="495" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#58a6ff">M5 (NMOS)</text>
+    <text x="425" y="510" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">W=20µ, L=1µ</text>
+  </g>
+  <!-- M5 Source to GND -->
+  <line x1="410" y1="525" x2="410" y2="710" stroke="#79c0ff" stroke-width="2.5"/>
+  <circle cx="410" cy="710" r="4" fill="#79c0ff"/>
+
+  <!-- VBIAS_TAIL Terminal for M5 and M9 -->
+  <line x1="300" y1="500" x2="220" y2="500" stroke="#a371f7" stroke-width="2.5"/>
+  <rect x="135" y="483" width="115" height="34" rx="5" fill="#8957e5" fill-opacity="0.3" stroke="#8957e5" stroke-width="1.5"/>
+  <text x="192" y="505" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="bold" fill="#d2a8ff">VBIAS_TAIL</text>
+  <text x="192" y="528" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#8b949e">0.6 V Bias</text>
+
+  <!-- ======================================================== -->
+  <!-- STAGE 2: COMMON SOURCE AMPLIFIER (M7 & M9)               -->
+  <!-- ======================================================== -->
+
+  <!-- Signal connection from net2 to M7 Gate -->
+  <path d="M 500 285 L 730 285 L 730 230 L 760 230" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+  <circle cx="730" cy="285" r="3.5" fill="#58a6ff"/>
+
+  <!-- ===== M7 (PMOS, Common-Source Driver) ===== -->
+  <!-- Center at (800, 230) -->
+  <g id="M7_PMOS">
+    <!-- Source wire to VDD -->
+    <line x1="800" y1="130" x2="800" y2="205" stroke="#f0883e" stroke-width="2.5"/>
+    <circle cx="800" cy="130" r="4" fill="#f0883e"/>
+    <!-- Source terminal -->
+    <line x1="800" y1="205" x2="785" y2="205" stroke="#f0883e" stroke-width="2.5"/>
+    <line x1="785" y1="205" x2="785" y2="215" stroke="#f0883e" stroke-width="2.5"/>
+    <!-- Channel Bar -->
+    <line x1="785" y1="213" x2="785" y2="247" stroke="#f0883e" stroke-width="3.5"/>
+    <!-- Drain terminal -->
+    <line x1="785" y1="245" x2="785" y2="255" stroke="#f0883e" stroke-width="2.5"/>
+    <line x1="785" y1="255" x2="800" y2="255" stroke="#f0883e" stroke-width="2.5"/>
+    <!-- Gate oxide bar -->
+    <line x1="775" y1="213" x2="775" y2="247" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Inversion Bubble -->
+    <circle cx="769" cy="230" r="5" fill="#0b0e14" stroke="#f0883e" stroke-width="2"/>
+    <!-- Gate Lead -->
+    <line x1="764" y1="230" x2="760" y2="230" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Labels -->
+    <text x="815" y="210" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f0883e">M7 (PMOS)</text>
+    <text x="815" y="225" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">W=40µ, L=1µ</text>
+    <text x="808" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">S</text>
+    <text x="808" y="270" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">D</text>
+  </g>
+
+  <!-- ===== M9 (NMOS, Current Sink Load) ===== -->
+  <!-- Center at (800, 500) -->
+  <g id="M9_NMOS">
+    <line x1="800" y1="475" x2="785" y2="475" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="785" y1="475" x2="785" y2="485" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Channel -->
+    <line x1="785" y1="483" x2="785" y2="517" stroke="#58a6ff" stroke-width="3.5"/>
+    <!-- Source -->
+    <line x1="785" y1="515" x2="785" y2="525" stroke="#58a6ff" stroke-width="2.5"/>
+    <line x1="785" y1="525" x2="800" y2="525" stroke="#58a6ff" stroke-width="2.5"/>
+    <!-- Gate oxide bar -->
+    <line x1="775" y1="483" x2="775" y2="517" stroke="#e6edf3" stroke-width="2.5"/>
+    <!-- Gate Lead -->
+    <line x1="775" y1="500" x2="720" y2="500" stroke="#a371f7" stroke-width="2.5"/>
+    <!-- Arrow -->
+    <polygon points="785,500 779,496 779,504" fill="#58a6ff"/>
+    <!-- Labels -->
+    <text x="815" y="495" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#58a6ff">M9 (NMOS)</text>
+    <text x="815" y="510" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">W=20µ, L=1µ</text>
+  </g>
+  <!-- M9 Gate connection to VBIAS_TAIL bus -->
+  <path d="M 720 500 L 720 560 L 300 560 L 300 500" fill="none" stroke="#a371f7" stroke-width="2" stroke-dasharray="4,2"/>
+  <circle cx="300" cy="500" r="3.5" fill="#a371f7"/>
+  <!-- M9 Source to GND -->
+  <line x1="800" y1="525" x2="800" y2="710" stroke="#79c0ff" stroke-width="2.5"/>
+  <circle cx="800" cy="710" r="4" fill="#79c0ff"/>
+
+  <!-- Output Node Wire between M7 Drain and M9 Drain -->
+  <line x1="800" y1="255" x2="800" y2="475" stroke="#f0883e" stroke-width="3"/>
+  <circle cx="800" cy="370" r="5.5" fill="#f0883e"/>
+
+  <!-- Output Lead to PAD_TIA_OUT -->
+  <line x1="800" y1="370" x2="1030" y2="370" stroke="#f0883e" stroke-width="3"/>
+  <circle cx="1030" cy="370" r="4" fill="#f0883e"/>
+  <!-- PAD Box -->
+  <rect x="1030" y="340" width="135" height="60" rx="6" fill="#d29922" fill-opacity="0.25" stroke="#d29922" stroke-width="2"/>
+  <text x="1097" y="365" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#eac54f">PAD_TIA_OUT</text>
+  <text x="1097" y="385" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#58a6ff">0.9 V → 1.7 V</text>
+
+  <!-- ======================================================== -->
+  <!-- MILLER COMPENSATION CAPACITOR Cc (5 pF)                  -->
+  <!-- ======================================================== -->
+  <!-- Connected between net2 (730, 285) and output (800, 370) -->
+  <path d="M 690 285 L 690 320" fill="none" stroke="#58a6ff" stroke-width="2"/>
+  <circle cx="690" cy="285" r="3.5" fill="#58a6ff"/>
+  <!-- Capacitor Plates -->
+  <line x1="675" y1="320" x2="705" y2="320" stroke="#58a6ff" stroke-width="3"/>
+  <line x1="675" y1="328" x2="705" y2="328" stroke="#58a6ff" stroke-width="3"/>
+  <path d="M 690 328 L 690 370 L 800 370" fill="none" stroke="#58a6ff" stroke-width="2"/>
+  <text x="640" y="330" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#79c0ff">Cc</text>
+  <text x="640" y="345" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">5 pF</text>
+
+  <!-- ======================================================== -->
+  <!-- SENSOR INPUT & SUMMING JUNCTION                          -->
+  <!-- ======================================================== -->
+  <!-- M3 Gate lead connects to PAD_SENSOR_IN -->
+  <line x1="220" y1="360" x2="120" y2="360" stroke="#ff7b72" stroke-width="2.5"/>
+  <circle cx="220" cy="360" r="4.5" fill="#ff7b72"/>
+
+  <!-- PAD_SENSOR_IN Pin Box -->
+  <rect x="25" y="332" width="135" height="56" rx="6" fill="#da3633" fill-opacity="0.25" stroke="#f85149" stroke-width="2"/>
+  <text x="92" y="356" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#ff7b72">PAD_SENSOR_IN</text>
+  <text x="92" y="375" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#e6edf3">Virtual GND: 0.90V</text>
+
+  <!-- Sensor Symbol (Current Source) -->
+  <g id="Sensor_Source">
+    <line x1="92" y1="332" x2="92" y2="280" stroke="#f85149" stroke-width="2.5"/>
+    <!-- Current source circle -->
+    <circle cx="92" cy="250" r="22" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <line x1="92" y1="262" x2="92" y2="238" stroke="#f85149" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="92" y1="228" x2="92" y2="185" stroke="#f85149" stroke-width="2"/>
+    <text x="92" y="175" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#f85149">I_sensor</text>
+    <text x="92" y="195" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">0 → 800 nA</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- FEEDBACK NETWORK: Rf (1M) & Cf (0.5p)                   -->
+  <!-- ======================================================== -->
+  <!-- Output pick-off point (920, 370) -->
+  <circle cx="920" cy="370" r="4.5" fill="#f0883e"/>
+  <!-- Feedback wire routes down, left, and back to input -->
+  <path d="M 920 370 L 920 620 L 630 620" fill="none" stroke="#e3b341" stroke-width="2.5"/>
+
+  <!-- ===== ZIGZAG RESISTOR Rf = 1 MΩ ===== -->
+  <g id="Rf_Zigzag">
+    <line x1="630" y1="620" x2="600" y2="620" stroke="#e3b341" stroke-width="2.5"/>
+    <!-- Zigzags -->
+    <path d="M 600 620 
+             L 590 605 
+             L 570 635 
+             L 550 605 
+             L 530 635 
+             L 510 605 
+             L 490 635 
+             L 470 605 
+             L 450 635 
+             L 440 620" 
+          fill="none" stroke="#f2cc60" stroke-width="3"/>
+    <line x1="440" y1="620" x2="410" y2="620" stroke="#e3b341" stroke-width="2.5"/>
+    <text x="520" y="590" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f2cc60">Rf = 1.0 MΩ</text>
+    <text x="520" y="655" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b949e">Transimpedance Gain = 1 mV/nA</text>
+  </g>
+
+  <!-- ===== PARALLEL CAPACITOR Cf = 0.5 pF ===== -->
+  <g id="Cf_Capacitor">
+    <path d="M 610 620 L 610 670 L 535 670" fill="none" stroke="#39c5cf" stroke-width="2"/>
+    <circle cx="610" cy="620" r="3.5" fill="#39c5cf"/>
+    <!-- Plates -->
+    <line x1="535" y1="655" x2="535" y2="685" stroke="#39c5cf" stroke-width="3"/>
+    <line x1="525" y1="655" x2="525" y2="685" stroke="#39c5cf" stroke-width="3"/>
+    <path d="M 525 670 L 430 670 L 430 620" fill="none" stroke="#39c5cf" stroke-width="2"/>
+    <circle cx="430" cy="620" r="3.5" fill="#39c5cf"/>
+    <text x="530" y="705" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#39c5cf">Cf = 0.5 pF</text>
+  </g>
+
+  <!-- Feedback wire returns to input node (220, 360) -->
+  <path d="M 410 620 L 220 620 L 220 360" fill="none" stroke="#e3b341" stroke-width="2.5"/>
+
+  <!-- ======================================================== -->
+  <!-- ANNOTATION & FORMULA BANNER                              -->
+  <!-- ======================================================== -->
+  <rect x="700" y="660" width="460" height="85" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="720" y="685" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#58a6ff">TRANSFER FUNCTION &amp; CONVERSION:</text>
+  <text x="720" y="708" font-family="'Segoe UI', monospace" font-size="13" font-weight="bold" fill="#f0883e">V_out = 900 mV + (I_sensor × 1 MΩ)</text>
+  <text x="720" y="730" font-family="'Segoe UI', sans-serif" font-size="12" fill="#3fb950">1 nA Current Input ➔ 1 mV Voltage Output</text>
+
+</svg>

@@ -1,0 +1,23 @@
+# Proprietary hardware source files
+*.v
+*.sv
+*.vh
+*.spice
+*.sp
+*.cir
+*.sch
+*.sym
+*.mag
+*.ext
+*.gds
+*.lef
+*.def
+*.vcd
+*.tcl
+*.py
+*.out
+*.log
+runs/
+sim_output/
+GDS3D/
+.vscode/
